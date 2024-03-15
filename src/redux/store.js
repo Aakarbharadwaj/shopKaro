@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import todosReducer from '../features/todos/todosSlice'
-import filtersReducer from '../features/filters/filtersSlice'
 
-export const store = configureStore({
+import cartSlice from './features/cartSlice'
+
+const store = configureStore({
   reducer: {
-    todos: todosReducer,
-    filters: filtersReducer,
+    cart: cartSlice.reducer,
   },
 })
+
+export default store;

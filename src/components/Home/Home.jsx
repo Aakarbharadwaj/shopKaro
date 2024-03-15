@@ -26,7 +26,7 @@ const Home = () => {
       <div className='card-container'>
         {
           data.map((value, index)=>(
-            <CardSection key={index} image={value.image} title={value.title} price={value.price}/>
+            <CardSection key={index} data={value}/>
           ))
         }
         

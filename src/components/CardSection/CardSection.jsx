@@ -2,19 +2,37 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import "./CardSection.css"
-const CardSection = ({ image, title, price }) => {
+import { add } from '../../redux/features/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+const CardSection = ({ data }) => {
+
+    const dispatch = useDispatch();
+    const CartItems = useSelector((state) => state.cart)
+
+    const addToCart = (item) => {
+        dispatch(add(item));
+    }
+
+    const generateQty = (productid) => {
+        const Items = CartItems.find((i) => i.id === productid)
+        return Items ? Items.quantity : 0;
+
+    }
+
     return (
         <>
             <Card style={{ width: '18rem', marginBottom: "40px" }} >
-                <Card.Img variant="top" src={image} style={{ width: "50%", height: "50%", margin: "auto" }} />
+                <Card.Img variant="top" src={
+                    data.image} style={{ width: "50%", height: "50%", margin: "auto" }} />
                 <Card.Body>
-                    <Card.Title>{title}</Card.Title>
+                    <Card.Title>{data.title.slice(0, 20)}...</Card.Title>
                     <Card.Text>
-                        ${price}
+                        ${data.price}
                     </Card.Text>
-                    <div className='item'>count</div>
-                    <div className='container d-flex btngap mb-5'>
-                        <Button variant="primary">Add</Button>
+                    <div className='item'>selected:{generateQty(data.id)} </div>
+                    <div className='container d-flex btngap '>
+                        <Button variant="primary"
+                            onClick={() => addToCart(data)} >Add</Button>
                         <Button variant="warning">Remove</Button>
                     </div>
 

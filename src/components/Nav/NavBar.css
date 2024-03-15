@@ -1,8 +1,10 @@
 .nav {
     background-color: goldenrod;
+    padding: 10px 10px;
 }
 
 .nav-list {
-    color: rgb(219, 215, 208);
+    color: rgb(232, 231, 230);
     text-decoration: none;
+    padding: 10px;
 }

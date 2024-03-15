@@ -1,26 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// const initialState = JSON.parse(localStorage.getItem("cart"))||[]
+const initialState = [];
 const cartSlice = createSlice({
     name: 'cart',
-    initialState: [],
+    initialState,
     reducers: {
         add: (state, action) => {
-           const productToAdd = action.payload;
-           const exsitingProduct = state.find(item => item.id === productToAdd.id)
+            const productToAdd = action.payload;
 
-           if(exsitingProduct){
-            exsitingProduct.quantity +=1;
-           }
-           else{
-            state.push({...productToAdd, quantity:1});
-           }
+            const exsitingProduct = state.find(item => item.id === productToAdd.id)
+
+            if (exsitingProduct) {
+                exsitingProduct.quantity += 1;
+            }
+            else {
+                state.push({ ...productToAdd, quantity: 1 });
+            }
         },
         remove: (state, action) => {
-            const todo = state.find((todo) => todo.id === action.payload)
-            todo.completed = !todo.completed
+            const productToRemove = state.find((todo) => todo.id === action.payload)
+
+                .completed = !todo.completed
         },
     },
 })
 
-export const { todoAdded, todoToggled } = cartSlice.actions
-export default cartSlice.reducer
+
+export const { add } = cartSlice.actions
+export default cartSlice
