@@ -12,17 +12,18 @@ const cartSlice = createSlice({
             const exsitingProduct = state.find(item => item.id === productToAdd.id)
 
             if (exsitingProduct) {
-                exsitingProduct.quantity += 1;
+
+                if (exsitingProduct.quantity < 5) {
+                    exsitingProduct.quantity += 1;
+                }
             }
             else {
                 state.push({ ...productToAdd, quantity: 1 });
             }
         },
-        remove: (state, action) => {
-            const productToRemove = state.find((todo) => todo.id === action.payload)
-
-                .completed = !todo.completed
-        },
+        // remove: (state, action) => {
+        //     const productToRemove = state.find((todo) => todo.id === action.payload);
+        // },
     },
 })
 

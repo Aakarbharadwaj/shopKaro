@@ -14,9 +14,8 @@ const CardSection = ({ data }) => {
     }
 
     const generateQty = (productid) => {
-        const Items = CartItems.find((i) => i.id === productid)
+        const Items = CartItems.find((i) => i.id === productid.id)
         return Items ? Items.quantity : 0;
-
     }
 
     return (
@@ -29,7 +28,7 @@ const CardSection = ({ data }) => {
                     <Card.Text>
                         ${data.price}
                     </Card.Text>
-                    <div className='item'>selected:{generateQty(data.id)} </div>
+                    <div className='item'>selected:{generateQty(data)} </div>
                     <div className='container d-flex btngap '>
                         <Button variant="primary"
                             onClick={() => addToCart(data)} >Add</Button>
