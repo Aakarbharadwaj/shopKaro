@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-// import CardComponent from './CardComponent'
+import CardComponent from './CardComponent'
 const Cart = () => {
   const CartItems = useSelector((state) => state.cart)
   console.log(CartItems);
+
   return (
     <>
       <section className="h-100 h-custom" style={{ backgroundColor: '#d2c9ff' }}>
@@ -17,41 +18,18 @@ const Cart = () => {
                       <div className="p-5">
                         <div className="d-flex justify-content-between align-items-center mb-5">
                           <h1 className="fw-bold mb-0 text-black">Shopping Cart</h1>
-                          <h6 className="mb-0 text-muted">{CartItems.length} items</h6>
+                          <h6 className="mb-0 text-muted">{CartItems.length} {CartItems.length > 1 ? 'items added' : 'item added'}</h6>
                         </div>
 
 
                         {/* product section */}
-                        {/* <CardComponent /> */}
 
 
                         <hr className="my-4" />
                         {
                           CartItems.map(item => (
-                            <div className="row mb-4 d-flex justify-content-between align-items-center">
-                              <div className="col-md-2 col-lg-2 col-xl-2">
-                                <img src={item.image} className="img-fluid rounded-3" alt="Cotton T-shirt" />
-                              </div>
-                              <div className="col-md-3 col-lg-3 col-xl-3">
-                                <h6 className="text-muted">{item.category}</h6>
-                                <h6 className="text-black mb-0">{item.title}</h6>
-                              </div>
-                              <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                <button className="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                  <i className="fas fa-minus" />
-                                </button>
-                                <input id="form1" min={0} name="quantity" defaultValue={item.quantity} type="number" className="form-control form-control-sm" />
-                                <button className="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                  <i className="fas fa-plus" />
-                                </button>
-                              </div>
-                              <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h6 className="mb-0">{item.price}</h6>
-                              </div>
-                              <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                                <a href="#!" className="text-muted"><i className="fas fa-times" /></a>
-                              </div>
-                            </div>
+
+                            <CardComponent item={item} />
 
                           ))
                         }
