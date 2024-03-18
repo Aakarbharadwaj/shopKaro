@@ -23,9 +23,9 @@ const NavBar = () => {
             >
 
               {
-                navData.map((item) => (
+                navData.map((item,index) => (
                   <Nav.Link>
-                    <Link to={item.path} key={item.id} className='nav-list'>{item.name}</Link>
+                    <Link to={item.path} key={index} className='nav-list'>{item.name}</Link>
                   </Nav.Link>
                 ))
               }

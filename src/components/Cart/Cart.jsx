@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import CardComponent from './CardComponent'
+import { Link } from 'react-router-dom';
 const Cart = () => {
   const CartItems = useSelector((state) => state.cart)
   console.log(CartItems);
@@ -37,7 +38,7 @@ const Cart = () => {
 
 
                         <div className="pt-5">
-                          <h6 className="mb-0"><a href="#!" className="text-body"><i className="fas fa-long-arrow-alt-left me-2" />Back to shop</a></h6>
+                          <h6 className="mb-0"><i className="fas fa-long-arrow-alt-left me-2" /><Link to={"/"} className='home'> Back to shop</Link></h6>
                         </div>
                       </div>
                     </div>

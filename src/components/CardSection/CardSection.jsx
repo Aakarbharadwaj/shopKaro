@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import "./CardSection.css"
-import { add } from '../../redux/features/cartSlice';
+import { add,remove } from '../../redux/features/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 const CardSection = ({ data }) => {
 
@@ -12,7 +12,9 @@ const CardSection = ({ data }) => {
     const addToCart = (item) => {
         dispatch(add(item));
     }
-
+    const removeFromCart = (item) => {
+        dispatch(remove(item));
+    }
     const generateQty = (productid) => {
         const Items = CartItems.find((i) => i.id === productid.id)
         return Items ? Items.quantity : 0;
@@ -31,8 +33,11 @@ const CardSection = ({ data }) => {
                     <div className='item'>selected:{generateQty(data)} </div>
                     <div className='container d-flex btngap '>
                         <Button variant="primary"
-                            onClick={() => addToCart(data)} >Add</Button>
-                        <Button variant="warning">Remove</Button>
+                            onClick={() => addToCart(data)}
+                        >Add</Button>
+                        <Button variant="warning"
+                            onClick={() => removeFromCart(data)}
+                        >Remove</Button>
                     </div>
 
                 </Card.Body>
