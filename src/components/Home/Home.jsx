@@ -25,11 +25,11 @@ const Home = () => {
       <NavBar />
       <div className='card-container'>
         {
-          data.map((value, index)=>(
-            <CardSection key={index} data={value}/>
+          data.map((value, index) => (
+            <CardSection key={index} data={value} />
           ))
         }
-        
+
       </div>
     </>
   )
